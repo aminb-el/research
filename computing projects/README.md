@@ -88,7 +88,3 @@ Fraction of saved candidates with early_density >= 0.8: 0.0013774460985294308
 Fraction of saved candidates with early_density >= 0.8 AND density >= 0.45: 0.0004494483748722791
 
 Interpretation: very few saved candidates have extremely high early_density, and an even smaller fraction turn into strong overall density. That makes early_density a useful but not sufficient proxy.
-
-## Specific question you asked earlier: is a >= 7 plausibly better?
-
-Based on the retained results at this checkpoint, there is no empirical support yet for a >= 7 beating the current best density 0.5468, because there are no retained rows with a >= 7. This indicates either the sweep hasn't produced kept candidates for those a values yet, or the filters excluded them.
