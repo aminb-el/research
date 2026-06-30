@@ -1,90 +1,175 @@
-# Polynomial Search Report
+# Computing Projects
 
-Generated: 2026-01-28 13:18:38
+This folder contains computational explorations connected to number theory and mathematical experimentation.
 
-## Data included
+The files here are not presented as proofs, final papers, or current research claims. They are included as evidence of programming, search design, data collection, saved outputs, and exploratory mathematical testing.
 
-This report summarizes the current in-memory computation outputs: `results_df` (saved candidates) and `results_topk_df` (top-1000).
+## Main project: Prime-Polynomial Search
 
-- results_df rows: 309268
-- results_topk_df rows: 1000
+The main project in this folder is a large computational search over quadratic polynomials of the form:
 
-## Global distribution of saved candidates
+```txt id="8m2m8c"
+P(n) = a n^2 + b n + c
+```
 
-|               |   count |        mean |         std |        min |         50% |         90% |         95% |         99% |       max |
-|:--------------|--------:|------------:|------------:|-----------:|------------:|------------:|------------:|------------:|----------:|
-| density       |  309268 |    0.263836 |   0.0613206 |   0.1028   |    0.2594   |    0.3476   |    0.3716   |    0.4154   |    0.5468 |
-| early_density |  309268 |    0.422382 |   0.104847  |   0.253333 |    0.413333 |    0.573333 |    0.613333 |    0.693333 |    1      |
-| max_streak    |  309268 |    5.45308  |   2.2606    |   2        |    5        |    8        |    9        |   12        |   80      |
-| total_primes  |  309268 | 1319.18     | 306.603     | 514        | 1297        | 1738        | 1858        | 2077        | 2734      |
+The goal was to search for polynomial parameter triples `(a, b, c)` that produce unusually high prime density over a fixed range of integer inputs.
 
-Interpretation: the median density is around the 0.26 range, while the best observed density is 0.5468, which is deep in the extreme tail.
+This is a computational exploration, not a proof. It does not claim a theorem about prime-generating polynomials. Its value is in the search process, saved outputs, and the scale of the computation.
 
-## Best observed polynomials (top 20 by density)
+## Search scale
 
-|       |   a |    b |    c |   density |   early_density |   max_streak |   total_primes |
-|------:|----:|-----:|-----:|----------:|----------------:|-------------:|---------------:|
-| 53783 |   1 | 2329 | 1697 |    0.5468 |        0.826667 |           18 |           2734 |
-| 53838 |   1 | 2331 | 4027 |    0.5468 |        0.826667 |           18 |           2734 |
-| 44325 |   1 | 1837 | 1013 |    0.5154 |        0.826667 |           16 |           2577 |
-| 35962 |   1 | 1417 |  743 |    0.514  |        0.773333 |           13 |           2570 |
-| 36031 |   1 | 1419 | 2161 |    0.5138 |        0.76     |           12 |           2569 |
-| 36075 |   1 | 1421 | 3581 |    0.5138 |        0.76     |           12 |           2569 |
-| 31048 |   1 | 1183 |  359 |    0.5084 |        0.8      |           13 |           2542 |
-| 31103 |   1 | 1185 | 1543 |    0.5084 |        0.8      |           13 |           2542 |
-| 31160 |   1 | 1187 | 2729 |    0.5082 |        0.8      |           13 |           2541 |
-| 31240 |   1 | 1189 | 3917 |    0.508  |        0.8      |           13 |           2540 |
-| 51651 |   1 | 2217 | 3643 |    0.5068 |        0.786667 |           12 |           2534 |
-| 51596 |   1 | 2215 | 1427 |    0.5068 |        0.786667 |           12 |           2534 |
-| 30276 |   1 | 1147 |  839 |    0.5036 |        0.8      |           14 |           2518 |
-| 30344 |   1 | 1149 | 1987 |    0.5036 |        0.8      |           14 |           2518 |
-| 30386 |   1 | 1151 | 3137 |    0.5034 |        0.8      |           14 |           2517 |
-| 30442 |   1 | 1153 | 4289 |    0.5032 |        0.786667 |           14 |           2516 |
-| 54329 |   1 | 2357 | 1493 |    0.502  |        0.72     |           12 |           2510 |
-| 54381 |   1 | 2359 | 3851 |    0.5018 |        0.706667 |           12 |           2509 |
-| 34602 |   1 | 1351 |  827 |    0.4998 |        0.786667 |           10 |           2499 |
-| 34651 |   1 | 1353 | 2179 |    0.4996 |        0.786667 |           10 |           2498 |
+The saved checkpoint summarizes a run with:
 
-## Best density by a (coverage check)
+```txt id="ruimkd"
+a range:        1 to 10
+b range:       -2500 to 2500
+c values:       primes below 5002
+n range:        1 to 5000
+early test:     n = 1 to 75
+saved results:  309,268 rows
+top results:    top 1000 candidates
+```
 
-|   a |   best_density |   median_density |   n_rows |
-|----:|---------------:|-----------------:|---------:|
-|   1 |         0.5468 |           0.2772 |    56944 |
-|   2 |         0.4888 |           0.2688 |    56591 |
-|   3 |         0.493  |           0.2632 |    39279 |
-|   4 |         0.4764 |           0.2602 |    60574 |
-|   5 |         0.4834 |           0.235  |    54691 |
-|   6 |         0.467  |           0.256  |    41189 |
+The checkpoint records:
 
-Interpretation: in the retained results, only a = 1..6 appear. This does not prove a >= 7 is bad; it means your kept-candidate set has no a>=7 rows at this checkpoint.
+```txt id="m6yscp"
+tested candidates:   309,268
+skipped candidates:  20,029,732
+```
 
-## Top-1000 composition by a
+This means the search did not simply test a few famous examples. It generated, filtered, scored, saved, and summarized a large candidate space.
 
-|   a |   n_topk |   best_density |   median_density |
-|----:|---------:|---------------:|-----------------:|
-|   1 |      503 |         0.5468 |           0.4558 |
-|   2 |      249 |         0.4888 |           0.4612 |
-|   3 |       54 |         0.493  |           0.4531 |
-|   4 |      146 |         0.4764 |           0.4506 |
-|   5 |       26 |         0.4834 |           0.4542 |
-|   6 |       22 |         0.467  |           0.4535 |
+## Best observed result
 
-## Metric relationships
+The best observed density in the saved candidate set was:
 
-Correlation matrix among key metrics:
+```txt id="p3eem0"
+density = 0.5468
+```
 
-|               |   density |   early_density |   max_streak |   total_primes |
-|:--------------|----------:|----------------:|-------------:|---------------:|
-| density       |  1        |        0.865515 |     0.677111 |       1        |
-| early_density |  0.865515 |        1        |     0.660244 |       0.865515 |
-| max_streak    |  0.677111 |        0.660244 |     1        |       0.677111 |
-| total_primes  |  1        |        0.865515 |     0.677111 |       1        |
+Two top candidates reached this value:
 
-Interpretation: density and early_density are strongly positively correlated, and density tracks total_primes essentially perfectly in this dataset (likely because total_primes is derived from density times a fixed evaluation horizon).
+```txt id="h8bqj0"
+P(n) = n^2 + 2329n + 1697
+P(n) = n^2 + 2331n + 4027
+```
 
-## Early filter diagnostic
+For the evaluation range `n = 1` to `5000`, each produced:
 
-Fraction of saved candidates with early_density >= 0.8: 0.0013774460985294308
-Fraction of saved candidates with early_density >= 0.8 AND density >= 0.45: 0.0004494483748722791
+```txt id="7r29yz"
+2734 prime values out of 5000
+```
 
-Interpretation: very few saved candidates have extremely high early_density, and an even smaller fraction turn into strong overall density. That makes early_density a useful but not sufficient proxy.
+This is an extreme-tail result within the saved candidate set. The median saved-candidate density was around `0.2594`, while the best observed density was `0.5468`.
+
+## Files
+
+```txt id="hko1bw"
+README.md
+Collatz computations.md
+polynomial_prime_search.cpp
+polynomial_prime_search.exe
+polynomial_search_state_summary.json
+polynomial_search_summary.pdf
+top_1000_results.csv
+topk_by_a_summary.csv
+best_by_a_summary.csv
+json.hpp
+hello
+```
+
+## File guide
+
+### `polynomial_prime_search.cpp`
+
+Main source file for the polynomial search program.
+
+It includes:
+
+```txt id="m83vdu"
+prime checking
+sieve-based optimization
+early filtering
+candidate evaluation
+autosave/resume support
+density scoring
+top-result ranking
+PDF report generation
+```
+
+Note: this file should eventually be renamed if the source is Python code rather than C++.
+
+### `polynomial_prime_search.exe`
+
+Executable version of the search tool, kept for convenience so the exact program used in the exploration can be run more easily.
+
+The source file is included so the logic can be inspected rather than relying only on the executable.
+
+### `polynomial_search_state_summary.json`
+
+Compact checkpoint summary of the computation.
+
+It records:
+
+```txt id="2fcqcd"
+search parameters
+progress boundary
+number of saved results
+number of tested/skipped candidates
+summary statistics for density, early density, max streak, and total prime count
+```
+
+### `top_1000_results.csv`
+
+The top 1000 saved polynomial candidates ranked by search performance.
+
+### `topk_by_a_summary.csv`
+
+A summary of how the top 1000 candidates are distributed across different values of `a`.
+
+### `best_by_a_summary.csv`
+
+The best observed density, median density, and saved-row count for each retained value of `a`.
+
+### `polynomial_search_summary.pdf`
+
+A PDF summary report of the search output.
+
+### `json.hpp`
+
+Supporting header/dependency file retained with the project files.
+
+### `Collatz computations.md`
+
+A note pointing to older Collatz-style computational tools from my earlier GitHub account.
+
+These Collatz materials are included only as programming and computational exploration history. They are not presented as a proof of the Collatz conjecture or as a current mathematical claim.
+
+## Interpretation
+
+The prime-polynomial search is useful because it shows:
+
+```txt id="i21srk"
+large-scale computational exploration
+search-space design
+early filtering
+saved checkpoints
+data summaries
+ranking of results
+statistical comparison across candidates
+```
+
+It should not be interpreted as:
+
+```txt id="73h839"
+a proof
+a formal theorem
+a completed research paper
+a claim that the best observed polynomial is mathematically optimal
+```
+
+## Scope
+
+The search is checkpoint-based and exploratory. The saved results reflect the retained candidate set and the state of the computation at that checkpoint. They do not prove that larger ranges, different coefficient bounds, or different filters would behave the same way.
+
+This folder exists to document computational work that developed alongside my number theory projects.
