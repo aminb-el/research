@@ -1,8 +1,8 @@
 # Research Archive — Mohamed Amine Belachhab
 
-This repository collects my independent research papers, supporting files, evidence archives, and older development materials.
+This repository collects my independent research papers, supporting files, evidence archives, computational explorations, and older development materials.
 
-The main public-facing website is here:
+Main website:
 
 ```txt
 https://aminb-el.github.io/me/
@@ -12,7 +12,7 @@ https://aminb-el.github.io/me/
 
 This repository is an evidence archive. It is meant to make my work easier to inspect, verify, and follow through its development.
 
-The polished papers are available as PDFs. Supporting files may include source documents, scorer packets, analysis bundles, input/output archives, older cases, logs, notes, and previous versions.
+The polished papers are available as PDFs. Supporting files may include source documents, scorer packets, analysis bundles, input/output archives, old cases, logs, notes, previous versions, and computational outputs.
 
 ## Main folders
 
@@ -21,6 +21,7 @@ The polished papers are available as PDFs. Supporting files may include source d
 ├── AI project/
 ├── framework/
 ├── goldbach/
+├── computing projects/
 └── old archive/
 ```
 
@@ -42,7 +43,7 @@ Some sensitive or potentially misuse-enabling details are not included publicly.
 
 Contains my main truth-probability and importance-scoring work.
 
-This includes:
+Main files include:
 
 ```txt
 truth_importance_framework_relevance_gated.pdf
@@ -56,9 +57,9 @@ It also includes supporting archives such as analysis bundles, scorer packets, i
 The central framework evaluates statements through three outputs:
 
 ```txt
-T_abs(s)      evidence-weighted truth-probability
-T_perc(s,r)   perceived truth-probability
-I(s,r)        receiver-dependent importance
+T_abs(s)       evidence-weighted truth-probability
+T_perc(s,r)    perceived truth-probability
+I(s,r)         receiver-dependent importance
 ```
 
 The empirical study evaluates the framework across HumAID, CREDBANK/CredEvent, and LIAR/PolitiFact using blind external variable assignment and owner-side formula computation.
@@ -74,11 +75,32 @@ corrected_goldbach_paper.pdf
 goldbach_paper_fr.pdf
 ```
 
-The main paper develops a Goldbach-shift construction for propagating Goldbach representations, proving generated-family lower bounds under known short-interval prime results and conditional prime-gap assumptions, while separating deterministic claims from heuristic prime-selector behavior.
+The main paper develops a Goldbach-shift construction for propagating Goldbach representations. It proves generated-family lower bounds under known short-interval prime results and conditional prime-gap assumptions, while separating deterministic claims from heuristic prime-selector behavior.
+
+## computing projects
+
+Contains computational explorations connected to number theory and mathematical experimentation.
+
+These files are not presented as proofs, final papers, or current research claims. They are included as evidence of computational exploration, programming, data handling, pattern-searching, and saved experimental outputs.
+
+Current contents include prime-polynomial search materials such as:
+
+```txt
+polynomial_prime_search.cpp
+polynomial_search_state_summary.json
+polynomial_search_summary.pdf
+top_1000_results.csv
+topk_by_a_summary.csv
+best_by_a_summary.csv
+```
+
+This folder may also include notes pointing to older computational tools, such as Collatz-style browser experiments from my earlier GitHub account.
+
+The useful role of this folder is to document computation and exploration, not to claim solved conjectures.
 
 ## old archive
 
-This folder contains older drafts, abandoned ideas, computational explorations, previous versions, and development history.
+This folder contains older drafts, abandoned ideas, computational leftovers, previous versions, and development history.
 
 Files in this folder are not presented as current research claims. Some materials are incomplete, superseded, exploratory, or retained only to document the development path behind later work.
 
@@ -112,7 +134,7 @@ https://philpapers.org/rec/BELEEO-4
 
 This repository contains independent working papers and supporting materials. The papers are public for reading, checking, citation, and revision tracking.
 
-Some supporting materials are compressed as `.rar` archives to preserve folder structure and development history.
+Some supporting materials are compressed as archives to preserve folder structure and development history.
 
 ## Author
 
