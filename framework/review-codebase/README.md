@@ -27,7 +27,7 @@ It validates five target-free score-input rows, computes all three outputs, and 
 
 ## Provenance and scope
 
-The two files in `code/` are unchanged from the surviving V3.2 owner-side source package; the review script and compact input excerpt were prepared for inspection. The full source/scorer archives, technical papers, and historical outputs are in the parent [framework](https://github.com/aminb-el/research/tree/main/framework) directory. This folder is a reviewer-friendly presentation of surviving materials, **not a reconstructed historical Git commit history**.
+The formula engine in `code/` matches the surviving V3.2 source file byte-for-byte. The owner-side evaluator is provided as a readable reviewer copy; the review script and compact input excerpt were prepared for inspection. The full source/scorer archives, technical papers, and historical outputs are in the parent [framework](https://github.com/aminb-el/research/tree/main/framework) directory. This folder is a reviewer-friendly presentation of surviving materials, **not a reconstructed historical Git commit history**.
 
 The code expresses an independently developed modeling framework with AI-assisted work in organization, presentation, checking logs/results, and occasional code troubleshooting. External AI models also assigned atomic scores under an evaluation protocol. The reported benchmark tests are preliminary and do not establish that the system is free of bias.
 
